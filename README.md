@@ -1,6 +1,6 @@
 # 🚀 Portfolio Profesional - Paloma Ocaña Piña
 
-Un portfolio profesional desarrollado con Django que funciona como escaparate digital y currículum vitae interactivo.
+Mi portfolio profesional (desarrollado con Django) que funciona como mi escaparate digital y CV.
 
 ## 🌐 **Demo en Vivo**
 
@@ -18,7 +18,6 @@ Un portfolio profesional desarrollado con Django que funciona como escaparate di
 - 🐳 **Docker Local**: http://localhost:8000
 - 📦 **Repositorio**: https://github.com/PalomaGit/portfolio
 
-*Versión estática optimizada para GitHub Pages con diseño futurista y responsive*
 
 ## ✨ Características Principales
 
@@ -113,11 +112,6 @@ portfolio/
 - **Gradientes**: Colores futuristas y neón
 - **Glassmorphism**: Efectos de cristal en elementos
 
-### Paleta de Colores
-- **Primario**: Verde neón (#00ff88)
-- **Secundario**: Azul eléctrico (#0088ff)
-- **Acento**: Púrpura (#8800ff)
-- **Fondo**: Negro profundo (#0a0a0a)
 
 ## 🔧 Optimizaciones Implementadas
 
@@ -164,11 +158,6 @@ portfolio/
 - **CDN global**: Carga rápida desde cualquier ubicación
 - **HTTPS automático**: Certificado SSL incluido
 
-### Previsualización en README
-- **Badges interactivos**: Enlaces directos con iconos
-- **Screenshots embebidos**: Capturas de pantalla del portfolio
-- **Enlaces múltiples**: Acceso desde diferentes fuentes
-- **Responsive**: Se adapta a cualquier dispositivo
 
 ## 📈 Próximas Mejoras
 
@@ -191,7 +180,6 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 - Email: palomaopina4c@gmail.com
 
 ## 🙏 Agradecimientos
-
 - Django Community
 - Bootstrap Team
 - Font Awesome
