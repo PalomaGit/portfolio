@@ -4,19 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paloma Ocaña - Desarrolladora Full-Stack</title>
+    
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <style>
         :root {
             --primary-color: #00ff88;
             --secondary-color: #0088ff;
-            --accent-color: #8800ff;
+            --accent-color: #ff0088;
             --dark-bg: #0a0a0a;
             --darker-bg: #050505;
+            --card-bg: rgba(255, 255, 255, 0.05);
             --text-primary: #ffffff;
             --text-secondary: #e0e0e0;
+            --gradient-primary: linear-gradient(135deg, #00ff88, #0088ff);
+            --gradient-secondary: linear-gradient(135deg, #ff0088, #00ff88);
+            --gradient-dark: linear-gradient(135deg, #0a0a0a, #1a1a1a);
         }
 
         * {
@@ -26,70 +36,216 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Exo 2', sans-serif;
             background: var(--dark-bg);
             color: var(--text-primary);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        .navbar {
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--dark-bg);
+        }
+
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 136, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 0, 136, 0.05) 0%, transparent 50%);
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(-20px) translateY(-10px); }
+            50% { transform: translateX(20px) translateY(10px); }
+            75% { transform: translateX(-10px) translateY(20px); }
+        }
+
+        /* Futuristic Navbar */
+        .navbar-futuristic {
             background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 255, 136, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-futuristic.scrolled {
+            background: rgba(5, 5, 5, 0.98);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.4);
+            box-shadow: 0 8px 40px rgba(0, 255, 136, 0.2);
         }
 
         .navbar-brand {
+            font-family: 'Orbitron', monospace;
             font-weight: 700;
+            font-size: 1.5rem;
             color: var(--primary-color) !important;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
         }
 
         .nav-link {
             color: var(--text-secondary) !important;
             font-weight: 500;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
+            position: relative;
         }
 
         .nav-link:hover {
             color: var(--primary-color) !important;
+            text-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
         }
 
-        .hero-section {
-            min-height: 100vh;
-            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
+        .nav-link.active {
+            color: var(--primary-color) !important;
+            text-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-primary);
+            border-radius: 1px;
+        }
+
+        /* Glitch Effect */
+        .glitch {
+            position: relative;
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            animation: glitch-1 0.5s infinite linear alternate-reverse;
+            color: var(--primary-color);
+            z-index: -1;
+        }
+
+        .glitch::after {
+            animation: glitch-2 0.5s infinite linear alternate-reverse;
+            color: var(--accent-color);
+            z-index: -2;
+        }
+
+        @keyframes glitch-1 {
+            0% { clip-path: inset(40% 0 61% 0); }
+            20% { clip-path: inset(92% 0 1% 0); }
+            40% { clip-path: inset(43% 0 1% 0); }
+            60% { clip-path: inset(25% 0 58% 0); }
+            80% { clip-path: inset(54% 0 7% 0); }
+            100% { clip-path: inset(58% 0 43% 0); }
+        }
+
+        @keyframes glitch-2 {
+            0% { clip-path: inset(25% 0 58% 0); }
+            20% { clip-path: inset(54% 0 7% 0); }
+            40% { clip-path: inset(58% 0 43% 0); }
+            60% { clip-path: inset(40% 0 61% 0); }
+            80% { clip-path: inset(92% 0 1% 0); }
+            100% { clip-path: inset(43% 0 1% 0); }
+        }
+
+        /* Typing Effect */
+        .typing-effect {
+            border-right: 2px solid var(--primary-color);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { border-color: var(--primary-color); }
+            51%, 100% { border-color: transparent; }
+        }
+
+        /* Futuristic Cards */
+        .card-futuristic {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 255, 136, 0.1);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
 
-        .hero-content {
-            z-index: 2;
-            position: relative;
+        .card-futuristic::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+            transition: left 0.5s ease;
         }
 
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .card-futuristic:hover::before {
+            left: 100%;
         }
 
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
+        .card-futuristic:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.2);
         }
 
+        /* Futuristic Buttons */
         .btn-futuristic {
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            background: var(--gradient-primary);
             border: none;
             color: var(--dark-bg);
             font-weight: 600;
             padding: 12px 30px;
             border-radius: 25px;
             transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-futuristic::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-futuristic:hover::before {
+            left: 100%;
         }
 
         .btn-futuristic:hover {
@@ -98,98 +254,315 @@
             color: var(--dark-bg);
         }
 
-        .card-futuristic {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
+        .btn-outline-futuristic {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 10px 28px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-outline-futuristic:hover {
+            background: var(--primary-color);
+            color: var(--dark-bg);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.3);
+        }
+
+        /* Heading Styles */
+        .heading-futuristic {
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+            position: relative;
+        }
+
+        .heading-futuristic::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Pulse Animation */
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Skill Progress Bars */
+        .skill-progress {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .skill-progress-bar {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+            position: relative;
+        }
+
+        .skill-progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Tech Grid */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .tech-item {
+            background: var(--card-bg);
             border: 1px solid rgba(0, 255, 136, 0.2);
             border-radius: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .card-futuristic:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-color);
-            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.2);
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 2rem;
-        }
-
-        .skill-category {
-            margin-bottom: 3rem;
-        }
-
-        .skill-category h3 {
-            color: var(--secondary-color);
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .skill-item {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(0, 255, 136, 0.2);
-            border-radius: 10px;
             padding: 1.5rem;
             text-align: center;
             transition: all 0.3s ease;
-            margin-bottom: 1rem;
         }
 
-        .skill-item:hover {
+        .tech-item:hover {
+            transform: translateY(-5px);
             border-color: var(--primary-color);
-            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.2);
         }
 
-        .skill-icon {
+        .tech-item i {
             font-size: 2.5rem;
             color: var(--primary-color);
             margin-bottom: 1rem;
         }
 
-        .contact-info {
-            background: rgba(0, 255, 136, 0.1);
-            border: 1px solid var(--primary-color);
-            border-radius: 15px;
-            padding: 2rem;
+        /* Project Cards */
+        .project-image {
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px 15px 0 0;
+            transition: transform 0.3s ease;
         }
 
-        .social-links a {
-            color: var(--text-secondary);
-            font-size: 1.5rem;
-            margin: 0 1rem;
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        /* Blog Cards */
+        .blog-image {
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px 15px 0 0;
+        }
+
+        /* Testimonial Cards */
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+        }
+
+        /* Form Styles */
+        .form-control {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            color: var(--text-primary);
+            border-radius: 10px;
+            padding: 12px 15px;
             transition: all 0.3s ease;
         }
 
-        .social-links a:hover {
-            color: var(--primary-color);
-            transform: scale(1.2);
+        .form-control:focus {
+            background: var(--card-bg);
+            border-color: var(--primary-color);
+            color: var(--text-primary);
+            box-shadow: 0 0 0 0.2rem rgba(0, 255, 136, 0.25);
         }
 
-        .footer {
-            background: var(--darker-bg);
-            border-top: 1px solid rgba(0, 255, 136, 0.2);
-            padding: 2rem 0;
+        .form-control::placeholder {
+            color: var(--text-secondary);
         }
 
-        /* Responsive */
+        /* Override Bootstrap text colors */
+        .text-muted {
+            color: var(--text-secondary) !important;
+        }
+
+        .text-secondary {
+            color: var(--text-secondary) !important;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 2.5rem !important;
             }
             
             .hero-subtitle {
-                font-size: 1.2rem;
+                font-size: 1.5rem !important;
+            }
+            
+            .tech-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+        /* Mobile Horizontal Scroll */
+        @media (max-width: 575.98px) {
+            .skills-mobile-scroll {
+                display: flex !important;
+                overflow-x: auto !important;
+                overflow-y: hidden !important;
+                gap: 1rem !important;
+                padding: 1rem 0 !important;
+                scroll-snap-type: x mandatory !important;
+                -webkit-overflow-scrolling: touch !important;
+                flex-wrap: nowrap !important;
+            }
+            
+            .skills-mobile-scroll::-webkit-scrollbar {
+                height: 6px;
+            }
+            
+            .skills-mobile-scroll::-webkit-scrollbar-track {
+                background: rgba(0, 255, 136, 0.1);
+                border-radius: 3px;
+            }
+            
+            .skills-mobile-scroll::-webkit-scrollbar-thumb {
+                background: var(--primary-color);
+                border-radius: 3px;
+            }
+            
+            .skill-item-mobile {
+                flex: 0 0 auto !important;
+                width: 200px !important;
+                scroll-snap-align: start !important;
+                margin-bottom: 0 !important;
+            }
+
+            .services-mobile-scroll {
+                display: flex !important;
+                overflow-x: auto !important;
+                overflow-y: hidden !important;
+                gap: 1rem !important;
+                padding: 1rem 0 !important;
+                scroll-snap-type: x mandatory !important;
+                -webkit-overflow-scrolling: touch !important;
+                flex-wrap: nowrap !important;
+            }
+            
+            .services-mobile-scroll::-webkit-scrollbar {
+                height: 6px;
+            }
+            
+            .services-mobile-scroll::-webkit-scrollbar-track {
+                background: rgba(0, 255, 136, 0.1);
+                border-radius: 3px;
+            }
+            
+            .services-mobile-scroll::-webkit-scrollbar-thumb {
+                background: var(--primary-color);
+                border-radius: 3px;
+            }
+            
+            .service-item-mobile {
+                flex: 0 0 auto !important;
+                width: 250px !important;
+                scroll-snap-align: start !important;
+                margin-bottom: 0 !important;
+            }
+
+            .projects-mobile-scroll {
+                display: flex !important;
+                overflow-x: auto !important;
+                overflow-y: hidden !important;
+                gap: 1rem !important;
+                padding: 1rem 0 !important;
+                scroll-snap-type: x mandatory !important;
+                -webkit-overflow-scrolling: touch !important;
+                flex-wrap: nowrap !important;
+            }
+            
+            .projects-mobile-scroll::-webkit-scrollbar {
+                height: 6px;
+            }
+            
+            .projects-mobile-scroll::-webkit-scrollbar-track {
+                background: rgba(0, 255, 136, 0.1);
+                border-radius: 3px;
+            }
+            
+            .projects-mobile-scroll::-webkit-scrollbar-thumb {
+                background: var(--primary-color);
+                border-radius: 3px;
+            }
+            
+            .project-card-mobile {
+                flex: 0 0 auto !important;
+                width: 280px !important;
+                scroll-snap-align: start !important;
+                margin-bottom: 0 !important;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-futuristic fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#home">Paloma Ocaña</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -207,6 +580,21 @@
                         <a class="nav-link" href="#skills">Habilidades</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#services">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Proyectos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#blog">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#resume">CV</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#contact">Contacto</a>
                     </li>
                 </ul>
@@ -215,71 +603,131 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-section d-flex align-items-center">
+    <section id="home" class="min-vh-100 d-flex align-items-center position-relative">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6" data-aos="fade-right">
-                    <div class="hero-content">
-                        <h1 class="hero-title">Paloma Ocaña Piña</h1>
-                        <p class="hero-subtitle">Desarrolladora Full-Stack</p>
-                        <p class="lead text-secondary mb-4">
-                            Técnico en Desarrollo de Aplicaciones Web en constante aprendizaje y mejora, 
-                            con dominio fluido del inglés y nivel intermedio de francés.
-                        </p>
-                        <div class="d-flex gap-3">
-                            <a href="#contact" class="btn btn-futuristic">
-                                <i class="fas fa-envelope me-2"></i>Contactar
-                            </a>
-                            <a href="https://github.com/PalomaGit/" class="btn btn-outline-light">
-                                <i class="fab fa-github me-2"></i>GitHub
-                            </a>
+                <div class="col-lg-6 col-md-12" data-aos="fade-right" data-aos-delay="200">
+                    <div class="mb-4">
+                        <h1 class="display-2 fw-bold mb-4 glitch hero-title" data-text="PALOMA OCAÑA">
+                            <span class="typing-effect">PALOMA OCAÑA</span>
+                        </h1>
+                         <h2 class="display-4 fw-bold mb-4 hero-subtitle" style="color: var(--primary-color);">
+                             <span class="typing-effect">DESARROLLADORA FULL-STACK</span>
+                         </h2>
+                    </div>
+                    <p class="lead mb-4 text-muted hero-description">
+                        Desarrolladora Full-Stack especializada en tecnologías web modernas. 
+                        Apasionada por crear soluciones innovadoras y en constante aprendizaje para aportar valor a cada proyecto.
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap hero-buttons">
+                        <a href="#projects" class="btn btn-futuristic btn-responsive">
+                            <i class="fas fa-rocket me-2"></i>EXPLORAR PROYECTOS
+                        </a>
+                        <a href="#contact" class="btn btn-outline-futuristic btn-responsive">
+                            <i class="fas fa-satellite-dish me-2"></i>CONECTAR
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 text-center" data-aos="fade-left" data-aos-delay="400">
+                    <div class="position-relative">
+                        <div class="card-futuristic p-5 profile-card-mobile" style="max-width: 400px; margin: 0 auto;">
+                            <div class="position-relative">
+                                <div class="profile-image-placeholder profile-image-mobile" style="width: 300px; height: 300px; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: var(--dark-bg); position: relative; overflow: hidden;">
+                                    <img src="profile.png" alt="Paloma Ocaña" class="img-responsive" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; background: var(--gradient-primary);">
+                                        <i class="fas fa-user-astronaut"></i>
+                                    </div>
+                                </div>
+                                <div class="position-absolute top-0 start-0 w-100 h-100" style="border-radius: 50%; border: 2px solid var(--primary-color); animation: pulse 2s infinite;"></div>
+                            </div>
+                            <div class="mt-4">
+                                <h4 class="fw-bold heading-responsive" style="color: var(--primary-color);">PERFIL PROFESIONAL</h4>
+                                <p class="text-muted text-responsive">Desarrolladora Full-Stack</p>
+                                <p class="text-muted text-responsive">Málaga, España</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 text-center" data-aos="fade-left">
-                    <div class="profile-image">
-                        <i class="fas fa-user-astronaut" style="font-size: 15rem; color: var(--primary-color);"></i>
-                    </div>
-                </div>
             </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="floating-elements">
+            <div class="floating-element" style="position: absolute; top: 20%; left: 10%; width: 20px; height: 20px; background: var(--primary-color); border-radius: 50%; animation: float 6s ease-in-out infinite;"></div>
+            <div class="floating-element" style="position: absolute; top: 60%; right: 15%; width: 15px; height: 15px; background: var(--secondary-color); border-radius: 50%; animation: float 8s ease-in-out infinite reverse;"></div>
+            <div class="floating-element" style="position: absolute; bottom: 30%; left: 20%; width: 25px; height: 25px; background: var(--accent-color); border-radius: 50%; animation: float 7s ease-in-out infinite;"></div>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="py-5">
         <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5" data-aos="fade-up">
-                    <h2 class="section-title">Sobre Mí</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h2 class="heading-futuristic display-4 mb-4">SOBRE MÍ</h2>
+                    <p class="lead text-muted mb-4">
+                        Desarrolladora Full-Stack apasionada por la tecnología, en constante aprendizaje y mejora. 
+                        Con dominio fluido del inglés y francés, me desenvuelvo fácilmente en entornos multiculturales.
+                    </p>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card-futuristic p-4 h-100">
+                                <h4 class="h5 fw-bold mb-3" style="color: var(--primary-color);">
+                                    <i class="fas fa-graduation-cap me-2"></i>EDUCACIÓN
+                                </h4>
+                                <p class="text-muted">
+                                    <strong>Grado Bilingüe Desarrollo de Aplicaciones Web</strong><br>
+                                    CPIFP Alan Turing PTA (2024 - Actualidad)<br><br>
+                                    <strong>Certificado de Profesionalidad</strong><br>
+                                    Desarrollo de Aplicaciones con Tecnología Web (IFCD2010)<br>
+                                    Alan Turing PTA (Abril 2025 - Octubre 2025)
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card-futuristic p-4 h-100">
+                                <h4 class="h5 fw-bold mb-3" style="color: var(--secondary-color);">
+                                    <i class="fas fa-briefcase me-2"></i>EXPERIENCIA
+                                </h4>
+                                <p class="text-muted">
+                                    Persona resolutiva, proactiva y eficiente con grandes habilidades para escuchar y comprender a los demás. 
+                                    Experiencia compaginando estudios y trabajo, facilitándome identificar las necesidades tanto del equipo como de los clientes.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-8 mx-auto" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-futuristic p-4">
-                        <h3 class="mb-3" style="color: var(--primary-color);">Mi Historia</h3>
-                        <p class="text-secondary mb-4">
-                            A lo largo de mi vida he compaginado estudios y trabajo, lo que me ha hecho una persona 
-                            resolutiva, proactiva y eficiente, con grandes habilidades para escuchar y comprender a los demás, 
-                            facilitándome identificar las necesidades tanto del equipo como de los clientes.
-                        </p>
-                        <p class="text-secondary mb-4">
-                            Mi pasión por la tecnología me llevó a dar el paso de redirigir mi carrera y seguir aprendiendo 
-                            cada día para aportar valor a los proyectos en los que participo.
-                        </p>
-                        
-                        <h4 class="mb-3" style="color: var(--secondary-color);">Educación</h4>
-                        <ul class="text-secondary">
-                            <li>Bachillerato Tecnológico, IES Mar de Alborán (2017-2019)</li>
-                            <li>Certificado de Profesionalidad en Desarrollo de Aplicaciones con Tecnología Web (IFCD2010), Alan Turing PTA (Abril 2025 - Octubre 2025)</li>
-                            <li>Grado Bilingüe Desarrollo de Aplicaciones Web, CPIFP Alan Turing PTA (2024 - Actualidad)</li>
-                        </ul>
-
-                        <h4 class="mb-3 mt-4" style="color: var(--secondary-color);">Idiomas</h4>
-                        <ul class="text-secondary">
-                            <li>Español: Nativo</li>
-                            <li>Inglés: Título Oficial Trinity, C1 | 2016</li>
-                            <li>Francés: Título Escuela Oficial de Idiomas, B1 | 2018</li>
-                        </ul>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="card-futuristic p-5">
+                        <h3 class="h2 fw-bold mb-4" style="color: var(--primary-color);">
+                            <i class="fas fa-microchip me-2"></i>TECNOLOGÍAS PRINCIPALES
+                        </h3>
+                        <div class="tech-grid">
+                            <div class="tech-item">
+                                <i class="fab fa-html5"></i>
+                                <h5>HTML5</h5>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fab fa-css3-alt"></i>
+                                <h5>CSS3</h5>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fab fa-js-square"></i>
+                                <h5>JavaScript</h5>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fab fa-angular"></i>
+                                <h5>Angular</h5>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fab fa-java"></i>
+                                <h5>Java</h5>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fab fa-node-js"></i>
+                                <h5>Node.js</h5>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -291,124 +739,230 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mb-5" data-aos="fade-up">
-                    <h2 class="section-title">Habilidades Técnicas</h2>
-                    <p class="lead text-secondary">Tecnologías y herramientas de vanguardia</p>
+                    <h2 class="heading-futuristic display-4 mb-4">HABILIDADES TÉCNICAS</h2>
+                    <p class="lead text-muted">Tecnologías y herramientas de vanguardia</p>
                 </div>
             </div>
 
             <!-- Frontend -->
-            <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
-                <h3><i class="fas fa-paint-brush me-2"></i>Frontend</h3>
-                <div class="row">
-                    <div class="col-md-3 col-sm-6 mb-3">
-                        <div class="skill-item">
-                            <div class="skill-icon"><i class="fab fa-html5"></i></div>
-                            <h5>HTML5</h5>
+            <div class="row mb-5" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-12">
+                    <h3 class="h2 fw-bold mb-4" style="color: var(--primary-color);">
+                        <i class="fas fa-microchip me-2"></i>FRONTEND
+                    </h3>
+                    <div class="row skills-mobile-scroll">
+                        <div class="col-md-3 col-sm-6 mb-4">
+                            <div class="card-futuristic h-100 text-center p-4 skill-item-mobile">
+                                <div class="mb-3">
+                                    <i class="fab fa-html5 fa-3x" style="color: var(--primary-color);"></i>
+                                </div>
+                                <h5 class="fw-bold mb-2">HTML5</h5>
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" role="progressbar" style="width: 90%; background-color: var(--primary-color);" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small class="text-muted mt-2">Experto</small>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 mb-3">
-                        <div class="skill-item">
-                            <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
-                            <h5>CSS3</h5>
+                        <div class="col-md-3 col-sm-6 mb-4">
+                            <div class="card-futuristic h-100 text-center p-4 skill-item-mobile">
+                                <div class="mb-3">
+                                    <i class="fab fa-css3-alt fa-3x" style="color: var(--primary-color);"></i>
+                                </div>
+                                <h5 class="fw-bold mb-2">CSS3</h5>
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" role="progressbar" style="width: 85%; background-color: var(--primary-color);" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small class="text-muted mt-2">Avanzado</small>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 mb-3">
-                        <div class="skill-item">
-                            <div class="skill-icon"><i class="fab fa-js-square"></i></div>
-                            <h5>JavaScript</h5>
+                        <div class="col-md-3 col-sm-6 mb-4">
+                            <div class="card-futuristic h-100 text-center p-4 skill-item-mobile">
+                                <div class="mb-3">
+                                    <i class="fab fa-js-square fa-3x" style="color: var(--primary-color);"></i>
+                                </div>
+                                <h5 class="fw-bold mb-2">JavaScript</h5>
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" role="progressbar" style="width: 80%; background-color: var(--secondary-color);" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small class="text-muted mt-2">Avanzado</small>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 mb-3">
-                        <div class="skill-item">
-                            <div class="skill-icon"><i class="fab fa-angular"></i></div>
-                            <h5>Angular</h5>
+                        <div class="col-md-3 col-sm-6 mb-4">
+                            <div class="card-futuristic h-100 text-center p-4 skill-item-mobile">
+                                <div class="mb-3">
+                                    <i class="fab fa-angular fa-3x" style="color: var(--primary-color);"></i>
+                                </div>
+                                <h5 class="fw-bold mb-2">Angular</h5>
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" role="progressbar" style="width: 75%; background-color: var(--secondary-color);" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small class="text-muted mt-2">Intermedio</small>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Backend -->
-            <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
-                <h3><i class="fas fa-server me-2"></i>Backend</h3>
-                <div class="row">
-                    <div class="col-md-3 col-sm-6 mb-3">
-                        <div class="skill-item">
-                            <div class="skill-icon"><i class="fab fa-java"></i></div>
-                            <h5>Java</h5>
+            <div class="row mb-5" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-12">
+                    <h3 class="h2 fw-bold mb-4" style="color: var(--primary-color);">
+                        <i class="fas fa-server me-2"></i>BACKEND
+                    </h3>
+                    <div class="row skills-mobile-scroll">
+                        <div class="col-md-3 col-sm-6 mb-4">
+                            <div class="card-futuristic h-100 text-center p-4 skill-item-mobile">
+                                <div class="mb-3">
+                                    <i class="fab fa-java fa-3x" style="color: var(--primary-color);"></i>
+                                </div>
+                                <h5 class="fw-bold mb-2">Java</h5>
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" role="progressbar" style="width: 85%; background-color: var(--primary-color);" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small class="text-muted mt-2">Avanzado</small>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 mb-3">
-                        <div class="skill-item">
-                            <div class="skill-icon"><i class="fab fa-node-js"></i></div>
-                            <h5>Node.js</h5>
+                        <div class="col-md-3 col-sm-6 mb-4">
+                            <div class="card-futuristic h-100 text-center p-4 skill-item-mobile">
+                                <div class="mb-3">
+                                    <i class="fab fa-node-js fa-3x" style="color: var(--primary-color);"></i>
+                                </div>
+                                <h5 class="fw-bold mb-2">Node.js</h5>
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" role="progressbar" style="width: 80%; background-color: var(--secondary-color);" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small class="text-muted mt-2">Avanzado</small>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 mb-3">
-                        <div class="skill-item">
-                            <div class="skill-icon"><i class="fab fa-php"></i></div>
-                            <h5>PHP</h5>
+                        <div class="col-md-3 col-sm-6 mb-4">
+                            <div class="card-futuristic h-100 text-center p-4 skill-item-mobile">
+                                <div class="mb-3">
+                                    <i class="fab fa-php fa-3x" style="color: var(--primary-color);"></i>
+                                </div>
+                                <h5 class="fw-bold mb-2">PHP</h5>
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" role="progressbar" style="width: 75%; background-color: var(--secondary-color);" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small class="text-muted mt-2">Intermedio</small>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Database -->
-            <div class="skill-category" data-aos="fade-up" data-aos-delay="400">
-                <h3><i class="fas fa-database me-2"></i>Base de Datos</h3>
-                <div class="row">
-                    <div class="col-md-3 col-sm-6 mb-3">
-                        <div class="skill-item">
-                            <div class="skill-icon"><i class="fas fa-database"></i></div>
-                            <h5>MySQL</h5>
+            <div class="row mb-5" data-aos="fade-up" data-aos-delay="400">
+                <div class="col-12">
+                    <h3 class="h2 fw-bold mb-4" style="color: var(--primary-color);">
+                        <i class="fas fa-database me-2"></i>BASE DE DATOS
+                    </h3>
+                    <div class="row skills-mobile-scroll">
+                        <div class="col-md-3 col-sm-6 mb-4">
+                            <div class="card-futuristic h-100 text-center p-4 skill-item-mobile">
+                                <div class="mb-3">
+                                    <i class="fas fa-database fa-3x" style="color: var(--primary-color);"></i>
+                                </div>
+                                <h5 class="fw-bold mb-2">MySQL</h5>
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" role="progressbar" style="width: 85%; background-color: var(--primary-color);" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small class="text-muted mt-2">Avanzado</small>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 mb-3">
-                        <div class="skill-item">
-                            <div class="skill-icon"><i class="fas fa-database"></i></div>
-                            <h5>PostgreSQL</h5>
+                        <div class="col-md-3 col-sm-6 mb-4">
+                            <div class="card-futuristic h-100 text-center p-4 skill-item-mobile">
+                                <div class="mb-3">
+                                    <i class="fas fa-database fa-3x" style="color: var(--primary-color);"></i>
+                                </div>
+                                <h5 class="fw-bold mb-2">PostgreSQL</h5>
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" role="progressbar" style="width: 80%; background-color: var(--secondary-color);" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small class="text-muted mt-2">Avanzado</small>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 mb-3">
-                        <div class="skill-item">
-                            <div class="skill-icon"><i class="fas fa-database"></i></div>
-                            <h5>MongoDB</h5>
+                        <div class="col-md-3 col-sm-6 mb-4">
+                            <div class="card-futuristic h-100 text-center p-4 skill-item-mobile">
+                                <div class="mb-3">
+                                    <i class="fas fa-database fa-3x" style="color: var(--primary-color);"></i>
+                                </div>
+                                <h5 class="fw-bold mb-2">MongoDB</h5>
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" role="progressbar" style="width: 75%; background-color: var(--secondary-color);" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small class="text-muted mt-2">Intermedio</small>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 mb-3">
-                        <div class="skill-item">
-                            <div class="skill-icon"><i class="fas fa-database"></i></div>
-                            <h5>SQL Server</h5>
+                        <div class="col-md-3 col-sm-6 mb-4">
+                            <div class="card-futuristic h-100 text-center p-4 skill-item-mobile">
+                                <div class="mb-3">
+                                    <i class="fas fa-database fa-3x" style="color: var(--primary-color);"></i>
+                                </div>
+                                <h5 class="fw-bold mb-2">SQL Server</h5>
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" role="progressbar" style="width: 70%; background-color: var(--accent-color);" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small class="text-muted mt-2">Intermedio</small>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Tools -->
-            <div class="skill-category" data-aos="fade-up" data-aos-delay="500">
-                <h3><i class="fas fa-tools me-2"></i>Herramientas</h3>
-                <div class="row">
-                    <div class="col-md-3 col-sm-6 mb-3">
-                        <div class="skill-item">
-                            <div class="skill-icon"><i class="fab fa-github"></i></div>
-                            <h5>Git/GitHub</h5>
+            <div class="row mb-5" data-aos="fade-up" data-aos-delay="500">
+                <div class="col-12">
+                    <h3 class="h2 fw-bold mb-4" style="color: var(--primary-color);">
+                        <i class="fas fa-tools me-2"></i>HERRAMIENTAS
+                    </h3>
+                    <div class="row skills-mobile-scroll">
+                        <div class="col-md-3 col-sm-6 mb-4">
+                            <div class="card-futuristic h-100 text-center p-4 skill-item-mobile">
+                                <div class="mb-3">
+                                    <i class="fab fa-github fa-3x" style="color: var(--primary-color);"></i>
+                                </div>
+                                <h5 class="fw-bold mb-2">Git/GitHub</h5>
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" role="progressbar" style="width: 90%; background-color: var(--primary-color);" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small class="text-muted mt-2">Experto</small>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 mb-3">
-                        <div class="skill-item">
-                            <div class="skill-icon"><i class="fab fa-docker"></i></div>
-                            <h5>Docker</h5>
+                        <div class="col-md-3 col-sm-6 mb-4">
+                            <div class="card-futuristic h-100 text-center p-4 skill-item-mobile">
+                                <div class="mb-3">
+                                    <i class="fab fa-docker fa-3x" style="color: var(--primary-color);"></i>
+                                </div>
+                                <h5 class="fw-bold mb-2">Docker</h5>
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" role="progressbar" style="width: 80%; background-color: var(--secondary-color);" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small class="text-muted mt-2">Avanzado</small>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 mb-3">
-                        <div class="skill-item">
-                            <div class="skill-icon"><i class="fas fa-laptop-code"></i></div>
-                            <h5>Cursor</h5>
+                        <div class="col-md-3 col-sm-6 mb-4">
+                            <div class="card-futuristic h-100 text-center p-4 skill-item-mobile">
+                                <div class="mb-3">
+                                    <i class="fas fa-laptop-code fa-3x" style="color: var(--primary-color);"></i>
+                                </div>
+                                <h5 class="fw-bold mb-2">Cursor</h5>
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" role="progressbar" style="width: 85%; background-color: var(--primary-color);" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small class="text-muted mt-2">Avanzado</small>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 mb-3">
-                        <div class="skill-item">
-                            <div class="skill-icon"><i class="fas fa-project-diagram"></i></div>
-                            <h5>UML</h5>
+                        <div class="col-md-3 col-sm-6 mb-4">
+                            <div class="card-futuristic h-100 text-center p-4 skill-item-mobile">
+                                <div class="mb-3">
+                                    <i class="fas fa-project-diagram fa-3x" style="color: var(--primary-color);"></i>
+                                </div>
+                                <h5 class="fw-bold mb-2">UML</h5>
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" role="progressbar" style="width: 75%; background-color: var(--secondary-color);" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small class="text-muted mt-2">Intermedio</small>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -416,41 +970,304 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-5">
+    <!-- Services Section -->
+    <section id="services" class="py-5">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mb-5" data-aos="fade-up">
-                    <h2 class="section-title">Contacto</h2>
-                    <p class="lead text-secondary">¿Tienes un proyecto en mente? ¡Hablemos!</p>
+                    <h2 class="heading-futuristic display-4 mb-4">SERVICIOS</h2>
+                    <p class="lead text-muted">Soluciones tecnológicas innovadoras</p>
+                </div>
+            </div>
+            <div class="row services-mobile-scroll">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-futuristic h-100 text-center p-4 service-item-mobile">
+                        <div class="mb-3">
+                            <i class="fas fa-code fa-3x" style="color: var(--primary-color);"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Desarrollo Web Full-Stack</h4>
+                        <p class="text-muted">Creación de aplicaciones web completas desde el frontend hasta el backend, utilizando las tecnologías más modernas del mercado.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-futuristic h-100 text-center p-4 service-item-mobile">
+                        <div class="mb-3">
+                            <i class="fas fa-mobile-alt fa-3x" style="color: var(--secondary-color);"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Aplicaciones Web Responsive</h4>
+                        <p class="text-muted">Desarrollo de interfaces adaptables que funcionan perfectamente en todos los dispositivos y tamaños de pantalla.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-futuristic h-100 text-center p-4 service-item-mobile">
+                        <div class="mb-3">
+                            <i class="fas fa-database fa-3x" style="color: var(--accent-color);"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Gestión de Bases de Datos</h4>
+                        <p class="text-muted">Diseño, implementación y optimización de bases de datos para garantizar el mejor rendimiento de tus aplicaciones.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-5" style="background: var(--darker-bg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5" data-aos="fade-up">
+                    <h2 class="heading-futuristic display-4 mb-4">PROYECTOS DESTACADOS</h2>
+                    <p class="lead text-muted">Algunos de mis trabajos más recientes</p>
+                </div>
+            </div>
+            <div class="row projects-mobile-scroll">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-futuristic h-100 project-card-mobile">
+                        <img src="https://via.placeholder.com/400x200/00ff88/000000?text=Portfolio+Website" alt="Portfolio Website" class="project-image">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold mb-3">Portfolio Profesional</h5>
+                            <p class="card-text text-muted mb-3">Sitio web personal desarrollado con Django, diseño futurista y responsive.</p>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="badge" style="background: var(--primary-color); color: var(--dark-bg);">Django</span>
+                                <span class="badge" style="background: var(--secondary-color); color: var(--dark-bg);">Bootstrap</span>
+                                <span class="badge" style="background: var(--accent-color); color: var(--dark-bg);">CSS3</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="https://github.com/PalomaGit/portfolio" class="btn btn-outline-futuristic btn-sm" target="_blank">
+                                    <i class="fab fa-github me-1"></i>GitHub
+                                </a>
+                                <a href="https://palomagit.github.io/portfolio/" class="btn btn-futuristic btn-sm" target="_blank">
+                                    <i class="fas fa-external-link-alt me-1"></i>Ver Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-futuristic h-100 project-card-mobile">
+                        <img src="https://via.placeholder.com/400x200/0088ff/ffffff?text=E-Commerce+App" alt="E-Commerce App" class="project-image">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold mb-3">Aplicación E-Commerce</h5>
+                            <p class="card-text text-muted mb-3">Plataforma de comercio electrónico con carrito de compras y sistema de pagos.</p>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="badge" style="background: var(--primary-color); color: var(--dark-bg);">Angular</span>
+                                <span class="badge" style="background: var(--secondary-color); color: var(--dark-bg);">Node.js</span>
+                                <span class="badge" style="background: var(--accent-color); color: var(--dark-bg);">MongoDB</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="#" class="btn btn-outline-futuristic btn-sm">
+                                    <i class="fab fa-github me-1"></i>GitHub
+                                </a>
+                                <a href="#" class="btn btn-futuristic btn-sm">
+                                    <i class="fas fa-external-link-alt me-1"></i>Ver Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-futuristic h-100 project-card-mobile">
+                        <img src="https://via.placeholder.com/400x200/ff0088/ffffff?text=Task+Manager" alt="Task Manager" class="project-image">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold mb-3">Gestor de Tareas</h5>
+                            <p class="card-text text-muted mb-3">Aplicación web para gestión de tareas con interfaz intuitiva y funcionalidades avanzadas.</p>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="badge" style="background: var(--primary-color); color: var(--dark-bg);">React</span>
+                                <span class="badge" style="background: var(--secondary-color); color: var(--dark-bg);">Express</span>
+                                <span class="badge" style="background: var(--accent-color); color: var(--dark-bg);">PostgreSQL</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="#" class="btn btn-outline-futuristic btn-sm">
+                                    <i class="fab fa-github me-1"></i>GitHub
+                                </a>
+                                <a href="#" class="btn btn-futuristic btn-sm">
+                                    <i class="fas fa-external-link-alt me-1"></i>Ver Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5" data-aos="fade-up">
+                    <h2 class="heading-futuristic display-4 mb-4">TESTIMONIOS</h2>
+                    <p class="lead text-muted">Lo que dicen sobre mi trabajo</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-futuristic h-100 p-4 text-center">
+                        <img src="https://via.placeholder.com/80x80/00ff88/000000?text=J" alt="Juan Pérez" class="testimonial-avatar mb-3">
+                        <h5 class="fw-bold mb-2">Juan Pérez</h5>
+                        <p class="text-muted mb-2">CEO, TechStart</p>
+                        <p class="text-muted">"Paloma demostró excelentes habilidades técnicas y una gran capacidad de adaptación. Su trabajo fue fundamental para el éxito de nuestro proyecto."</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-futuristic h-100 p-4 text-center">
+                        <img src="https://via.placeholder.com/80x80/0088ff/ffffff?text=M" alt="María García" class="testimonial-avatar mb-3">
+                        <h5 class="fw-bold mb-2">María García</h5>
+                        <p class="text-muted mb-2">Directora de Proyectos</p>
+                        <p class="text-muted">"Profesional excepcional con gran atención al detalle. Paloma siempre entrega trabajos de alta calidad y cumple con los plazos establecidos."</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-futuristic h-100 p-4 text-center">
+                        <img src="https://via.placeholder.com/80x80/ff0088/ffffff?text=C" alt="Carlos López" class="testimonial-avatar mb-3">
+                        <h5 class="fw-bold mb-2">Carlos López</h5>
+                        <p class="text-muted mb-2">Desarrollador Senior</p>
+                        <p class="text-muted">"Trabajar con Paloma ha sido una experiencia excelente. Su conocimiento técnico y su actitud colaborativa hacen que cualquier proyecto sea un éxito."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-5" style="background: var(--darker-bg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5" data-aos="fade-up">
+                    <h2 class="heading-futuristic display-4 mb-4">BLOG TÉCNICO</h2>
+                    <p class="lead text-muted">Artículos sobre desarrollo web y tecnología</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-futuristic h-100">
+                        <img src="https://via.placeholder.com/400x200/00ff88/000000?text=Django+Best+Practices" alt="Django Best Practices" class="blog-image">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold mb-3">Mejores Prácticas en Django</h5>
+                            <p class="card-text text-muted mb-3">Guía completa sobre las mejores prácticas para desarrollar aplicaciones Django escalables y mantenibles.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">15 Enero 2025</small>
+                                <a href="#" class="btn btn-outline-futuristic btn-sm">Leer más</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-futuristic h-100">
+                        <img src="https://via.placeholder.com/400x200/0088ff/ffffff?text=Responsive+Design" alt="Responsive Design" class="blog-image">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold mb-3">Diseño Responsive Moderno</h5>
+                            <p class="card-text text-muted mb-3">Técnicas avanzadas para crear interfaces que se adapten perfectamente a cualquier dispositivo.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">10 Enero 2025</small>
+                                <a href="#" class="btn btn-outline-futuristic btn-sm">Leer más</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-futuristic h-100">
+                        <img src="https://via.placeholder.com/400x200/ff0088/ffffff?text=Docker+Guide" alt="Docker Guide" class="blog-image">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold mb-3">Docker para Desarrolladores</h5>
+                            <p class="card-text text-muted mb-3">Aprende a containerizar tus aplicaciones web y mejorar tu flujo de trabajo de desarrollo.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">5 Enero 2025</small>
+                                <a href="#" class="btn btn-outline-futuristic btn-sm">Leer más</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5" data-aos="fade-up">
+                    <h2 class="heading-futuristic display-4 mb-4">CURRÍCULUM VITAE</h2>
+                    <p class="lead text-muted">Descarga mi CV completo</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <div class="card-futuristic p-5">
+                        <i class="fas fa-file-pdf fa-4x mb-4" style="color: var(--primary-color);"></i>
+                        <h4 class="fw-bold mb-3">CV Paloma Ocaña Piña</h4>
+                        <p class="text-muted mb-4">Descarga mi currículum vitae completo con toda mi información profesional y experiencia.</p>
+                        <a href="#" class="btn btn-futuristic btn-lg">
+                            <i class="fas fa-download me-2"></i>DESCARGAR CV
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5" style="background: var(--darker-bg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5" data-aos="fade-up">
+                    <h2 class="heading-futuristic display-4 mb-4">CONTACTO</h2>
+                    <p class="lead text-muted">¿Tienes un proyecto en mente? ¡Hablemos!</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    <div class="contact-info" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-futuristic p-5">
                         <div class="row">
                             <div class="col-md-6 mb-4">
-                                <h4 style="color: var(--primary-color);">Información de Contacto</h4>
-                                <p class="text-secondary mb-2">
-                                    <i class="fas fa-envelope me-2"></i>palomaopina4c@gmail.com
-                                </p>
-                                <p class="text-secondary mb-2">
-                                    <i class="fas fa-phone me-2"></i>+34 635173997
-                                </p>
-                                <p class="text-secondary mb-4">
-                                    <i class="fas fa-map-marker-alt me-2"></i>Málaga, España
-                                </p>
-                            </div>
-                            <div class="col-md-6">
-                                <h4 style="color: var(--secondary-color);">Redes Sociales</h4>
-                                <div class="social-links">
-                                    <a href="https://www.linkedin.com/in/paloma-oca%C3%B1a-pi%C3%B1a/" target="_blank">
-                                        <i class="fab fa-linkedin"></i>
+                                <h4 class="fw-bold mb-4" style="color: var(--primary-color);">
+                                    <i class="fas fa-satellite-dish me-2"></i>INFORMACIÓN DE CONTACTO
+                                </h4>
+                                <div class="mb-3">
+                                    <p class="text-muted mb-2">
+                                        <i class="fas fa-envelope me-2" style="color: var(--primary-color);"></i>
+                                        <strong>Email:</strong> palomaopina4c@gmail.com
+                                    </p>
+                                    <p class="text-muted mb-2">
+                                        <i class="fas fa-phone me-2" style="color: var(--primary-color);"></i>
+                                        <strong>Teléfono:</strong> +34 635173997
+                                    </p>
+                                    <p class="text-muted mb-4">
+                                        <i class="fas fa-map-marker-alt me-2" style="color: var(--primary-color);"></i>
+                                        <strong>Ubicación:</strong> Málaga, España
+                                    </p>
+                                </div>
+                                <h5 class="fw-bold mb-3" style="color: var(--secondary-color);">REDES SOCIALES</h5>
+                                <div class="d-flex gap-3">
+                                    <a href="https://www.linkedin.com/in/paloma-oca%C3%B1a-pi%C3%B1a/" class="btn btn-outline-futuristic" target="_blank">
+                                        <i class="fab fa-linkedin me-2"></i>LinkedIn
                                     </a>
-                                    <a href="https://github.com/PalomaGit/" target="_blank">
-                                        <i class="fab fa-github"></i>
+                                    <a href="https://github.com/PalomaGit/" class="btn btn-outline-futuristic" target="_blank">
+                                        <i class="fab fa-github me-2"></i>GitHub
                                     </a>
                                 </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="fw-bold mb-4" style="color: var(--secondary-color);">
+                                    <i class="fas fa-paper-plane me-2"></i>ENVÍAME UN MENSAJE
+                                </h4>
+                                <form>
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control" placeholder="Tu nombre" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="email" class="form-control" placeholder="Tu email" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control" placeholder="Asunto" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <textarea class="form-control" rows="4" placeholder="Tu mensaje" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-futuristic w-100">
+                                        <i class="fas fa-rocket me-2"></i>ENVIAR MENSAJE
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -460,20 +1277,16 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="py-5 mt-5" style="background: var(--darker-bg); border-top: 1px solid rgba(0, 255, 136, 0.2);">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p class="text-secondary mb-0">&copy; 2025 Paloma Ocaña. Todos los derechos reservados.</p>
+                    <p class="text-muted mb-0">&copy; 2025 Paloma Ocaña. Todos los derechos reservados.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/paloma-oca%C3%B1a-pi%C3%B1a/" target="_blank">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/PalomaGit/" target="_blank">
-                            <i class="fab fa-github"></i>
-                        </a>
+                    <div class="d-flex justify-content-md-end gap-3">
+                        <a href="https://www.linkedin.com/in/paloma-oca%C3%B1a-pi%C3%B1a/" class="text-muted" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="https://github.com/PalomaGit/" class="text-muted" target="_blank"><i class="fab fa-github fa-lg"></i></a>
                     </div>
                 </div>
             </div>
@@ -484,6 +1297,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Initialize AOS
         AOS.init({
             duration: 1000,
             once: true
@@ -505,12 +1319,56 @@
 
         // Navbar background on scroll
         window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
+            const navbar = document.querySelector('.navbar-futuristic');
             if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(5, 5, 5, 0.98)';
+                navbar.classList.add('scrolled');
             } else {
-                navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+                navbar.classList.remove('scrolled');
             }
+        });
+
+        // Active navigation highlighting
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate skill bars on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.skill-progress-bar');
+                    progressBars.forEach(bar => {
+                        const width = bar.getAttribute('aria-valuenow');
+                        bar.style.width = width + '%';
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skills-mobile-scroll').forEach(section => {
+            observer.observe(section);
         });
     </script>
 </body>
