@@ -1,0 +1,135 @@
+{% extends 'portfolio/base_futuristic.html' %}
+{% load static %}
+
+{% block title %}{{ post.title }} - Paloma Ocaña{% endblock %}
+
+{% block content %}
+<!-- Blog Detail Section -->
+<section class="py-5" style="min-height: 100vh; padding-top: 120px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <!-- Back Button -->
+                <div class="mb-4" data-aos="fade-up">
+                    <a href="{% url 'home' %}#blog" class="btn btn-outline-futuristic">
+                        <i class="fas fa-arrow-left me-2"></i>Volver al Blog
+                    </a>
+                </div>
+
+                <!-- Article Header -->
+                <div class="card-futuristic p-5 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-center mb-4">
+                        <div class="blog-image" style="height: 200px; background: var(--gradient-secondary); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--dark-bg); margin-bottom: 2rem;">
+                            <i class="fas fa-blog"></i>
+                        </div>
+                        <h1 class="display-4 fw-bold mb-3" style="color: var(--primary-color);">{{ post.title }}</h1>
+                        <p class="text-muted mb-0">
+                            <i class="fas fa-calendar me-2"></i>{{ post.created_date|date:"d M Y" }}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Article Content -->
+                <div class="card-futuristic p-5" data-aos="fade-up" data-aos-delay="400">
+                    <div class="article-content">
+                        <p class="lead text-muted mb-4">{{ post.excerpt }}</p>
+                        
+                        <div class="content-text">
+                            {{ post.content|linebreaks }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="row mt-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="col-md-6">
+                        <a href="{% url 'home' %}#blog" class="btn btn-futuristic w-100">
+                            <i class="fas fa-list me-2"></i>Todos los Artículos
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="{% url 'home' %}#contact" class="btn btn-outline-futuristic w-100">
+                            <i class="fas fa-envelope me-2"></i>Contactar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .article-content {
+        line-height: 1.8;
+    }
+    
+    .content-text {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+    }
+    
+    .content-text p {
+        margin-bottom: 1.5rem;
+    }
+    
+    .content-text h1, .content-text h2, .content-text h3 {
+        color: var(--primary-color);
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .content-text h1 {
+        font-size: 2rem;
+    }
+    
+    .content-text h2 {
+        font-size: 1.5rem;
+    }
+    
+    .content-text h3 {
+        font-size: 1.25rem;
+    }
+    
+    .content-text ul, .content-text ol {
+        margin-left: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .content-text li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .content-text code {
+        background: rgba(0, 255, 136, 0.1);
+        color: var(--primary-color);
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-family: 'Courier New', monospace;
+    }
+    
+    .content-text pre {
+        background: var(--darker-bg);
+        border: 1px solid rgba(0, 255, 136, 0.2);
+        border-radius: 10px;
+        padding: 1.5rem;
+        overflow-x: auto;
+        margin: 1.5rem 0;
+    }
+    
+    .content-text pre code {
+        background: none;
+        color: var(--text-primary);
+        padding: 0;
+    }
+    
+    .content-text blockquote {
+        border-left: 4px solid var(--primary-color);
+        padding-left: 1.5rem;
+        margin: 1.5rem 0;
+        font-style: italic;
+        color: var(--text-secondary);
+    }
+</style>
+{% endblock %}

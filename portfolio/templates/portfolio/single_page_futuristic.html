@@ -1,0 +1,578 @@
+{% extends 'portfolio/base_futuristic.html' %}
+{% load static %}
+
+{% block title %}Paloma Ocaña - Desarrolladora Full-Stack{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section id="home" class="min-vh-100 d-flex align-items-center position-relative hero-mobile">
+    <div class="container container-responsive">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-12" data-aos="fade-right" data-aos-delay="200">
+                <div class="mb-responsive">
+                    <h1 class="display-2 fw-bold mb-4 glitch hero-title" data-text="PALOMA OCAÑA">
+                        <span class="typing-effect">PALOMA OCAÑA</span>
+                    </h1>
+                     <h2 class="display-4 fw-bold mb-4 hero-subtitle" style="color: var(--primary-color);">
+                         <span class="typing-effect">DESARROLLADORA FULL-STACK</span>
+                     </h2>
+                </div>
+                <p class="lead mb-4 text-muted hero-description lead-responsive">
+                    Desarrolladora Full-Stack especializada en tecnologías web modernas. 
+                    Apasionada por crear soluciones innovadoras y en constante aprendizaje para aportar valor a cada proyecto.
+                </p>
+                <div class="d-flex gap-3 flex-wrap hero-buttons">
+                    <a href="#projects" class="btn btn-futuristic btn-responsive">
+                        <i class="fas fa-rocket me-2"></i>EXPLORAR PROYECTOS
+                    </a>
+                    <a href="#contact" class="btn btn-outline-futuristic btn-responsive">
+                        <i class="fas fa-satellite-dish me-2"></i>CONECTAR
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 text-center" data-aos="fade-left" data-aos-delay="400">
+                <div class="position-relative">
+                    <div class="card-futuristic p-5 profile-card-mobile" style="max-width: 400px; margin: 0 auto;">
+                        <div class="position-relative">
+                            <div class="profile-image-placeholder profile-image-mobile" style="width: 300px; height: 300px; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: var(--dark-bg); position: relative; overflow: hidden;">
+                                <img src="{% static 'images/profile.png' %}" alt="Paloma Ocaña" class="img-responsive" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; background: var(--gradient-primary);">
+                                    <i class="fas fa-user-astronaut"></i>
+                                </div>
+                            </div>
+                            <div class="position-absolute top-0 start-0 w-100 h-100" style="border-radius: 50%; border: 2px solid var(--primary-color); animation: pulse 2s infinite;"></div>
+                        </div>
+                        <div class="mt-4">
+                            <h4 class="fw-bold heading-responsive" style="color: var(--primary-color);">PERFIL PROFESIONAL</h4>
+                            <p class="text-muted text-responsive">Desarrolladora Full-Stack</p>
+                            <p class="text-muted text-responsive">Málaga, España</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Floating Elements -->
+    <div class="floating-elements">
+        <div class="floating-element" style="position: absolute; top: 20%; left: 10%; width: 20px; height: 20px; background: var(--primary-color); border-radius: 50%; animation: float 6s ease-in-out infinite;"></div>
+        <div class="floating-element" style="position: absolute; top: 60%; right: 15%; width: 15px; height: 15px; background: var(--secondary-color); border-radius: 50%; animation: float 8s ease-in-out infinite reverse;"></div>
+        <div class="floating-element" style="position: absolute; bottom: 30%; left: 20%; width: 25px; height: 25px; background: var(--accent-color); border-radius: 50%; animation: float 7s ease-in-out infinite;"></div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6" data-aos="fade-right">
+                <h2 class="heading-futuristic display-4 mb-4">SOBRE MÍ</h2>
+                <p class="lead text-muted mb-4">
+                    Desarrolladora Full-Stack apasionada por la tecnología, en constante aprendizaje y mejora. 
+                    Con dominio fluido del inglés y francés, me desenvuelvo fácilmente en entornos multiculturales.
+                </p>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card-futuristic p-4 h-100">
+                            <h4 class="h5 fw-bold mb-3" style="color: var(--primary-color);">
+                                <i class="fas fa-graduation-cap me-2"></i>EDUCACIÓN
+                            </h4>
+                            <p class="text-muted">
+                                <strong>Grado Bilingüe Desarrollo de Aplicaciones Web</strong><br>
+                                CPIFP Alan Turing PTA (2024 - Actualidad)<br><br>
+                                <strong>Certificado de Profesionalidad</strong><br>
+                                Desarrollo de Aplicaciones con Tecnología Web (IFCD2010)<br>
+                                Alan Turing PTA (Abril 2025 - Octubre 2025)
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card-futuristic p-4 h-100">
+                            <h4 class="h5 fw-bold mb-3" style="color: var(--secondary-color);">
+                                <i class="fas fa-briefcase me-2"></i>EXPERIENCIA
+                            </h4>
+                            <p class="text-muted">
+                                Persona resolutiva, proactiva y eficiente con grandes habilidades para escuchar y comprender a los demás. 
+                                Experiencia compaginando estudios y trabajo, facilitándome identificar las necesidades tanto del equipo como de los clientes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center" data-aos="fade-left">
+                <div class="card-futuristic p-5">
+                            <div class="tech-grid">
+                                <div class="tech-item">
+                                    <i class="fab fa-js-square fa-3x" style="color: var(--primary-color);"></i>
+                                    <span>JavaScript</span>
+                                </div>
+                                <div class="tech-item">
+                                    <i class="fab fa-angular fa-3x" style="color: var(--secondary-color);"></i>
+                                    <span>Angular</span>
+                                </div>
+                                <div class="tech-item">
+                                    <i class="fab fa-node-js fa-3x" style="color: var(--accent-color);"></i>
+                                    <span>Node.js</span>
+                                </div>
+                                <div class="tech-item">
+                                    <i class="fab fa-php fa-3x" style="color: var(--primary-color);"></i>
+                                    <span>PHP</span>
+                                </div>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+{% if skills %}
+<section id="skills" class="py-responsive" style="background: var(--darker-bg);">
+    <div class="container container-responsive">
+        <div class="row">
+            <div class="col-12 text-center mb-responsive" data-aos="fade-up">
+                <h2 class="heading-futuristic display-4 mb-4 heading-responsive">HABILIDADES TÉCNICAS</h2>
+                <p class="lead text-muted lead-responsive">Tecnologías y herramientas de vanguardia</p>
+            </div>
+        </div>
+        
+        {% for category, category_skills in skills.items %}
+        <div class="row mb-responsive" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:200 }}">
+            <div class="col-12">
+                <h3 class="h2 fw-bold mb-4 heading-responsive" style="color: var(--primary-color);">
+                    <i class="fas fa-microchip me-2"></i>{{ category|upper }}
+                </h3>
+                <div class="grid-responsive skills-mobile-scroll">
+                    {% for skill in category_skills %}
+                    <div class="skill-item-mobile">
+                        <div class="card-futuristic h-100 text-center p-4">
+                            <div class="mb-3">
+                                {% if skill.icon %}
+                                <i class="{{ skill.icon }} fa-3x" style="color: var(--primary-color);"></i>
+                                {% endif %}
+                            </div>
+                            <h5 class="fw-bold mb-3">{{ skill.name }}</h5>
+                            <div class="skill-bar mb-3">
+                                <div class="progress skill-progress">
+                                    <div class="progress-bar skill-progress-bar" role="progressbar" 
+                                         data-width="{{ skill.proficiency }}"
+                                         aria-valuenow="{{ skill.proficiency }}" 
+                                         aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                            <small class="text-muted">{{ skill.proficiency }}%</small>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+<!-- Services Section -->
+{% if services %}
+<section id="services" class="py-responsive">
+    <div class="container container-responsive">
+        <div class="row">
+            <div class="col-12 text-center mb-responsive" data-aos="fade-up">
+                <h2 class="heading-futuristic display-4 mb-4 heading-responsive">SERVICIOS</h2>
+                <p class="lead text-muted lead-responsive">Soluciones tecnológicas de vanguardia</p>
+            </div>
+        </div>
+        <div class="row services-mobile-scroll">
+            {% for service in services %}
+            <div class="col-lg-4 col-md-6 mb-4 service-item-mobile" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:200 }}">
+                <div class="card-futuristic h-100 text-center p-4">
+                    <div class="mb-4">
+                        {% if service.icon %}
+                        <i class="{{ service.icon }} fa-4x" style="color: var(--primary-color);"></i>
+                        {% endif %}
+                    </div>
+                    <h4 class="fw-bold mb-3">{{ service.title }}</h4>
+                    <p class="text-muted">{{ service.description }}</p>
+                    <div class="mt-auto">
+                        <a href="#contact" class="btn btn-outline-futuristic btn-sm">
+                            <i class="fas fa-arrow-right me-1"></i>MÁS INFO
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Projects Section -->
+<section id="projects" class="py-responsive" style="background: var(--darker-bg);">
+    <div class="container container-responsive">
+        <div class="row">
+            <div class="col-12 text-center mb-responsive" data-aos="fade-up">
+                <h2 class="heading-futuristic display-4 mb-4 heading-responsive">PROYECTOS</h2>
+                <p class="lead text-muted lead-responsive">Portfolio de proyectos innovadores</p>
+            </div>
+        </div>
+        {% if featured_projects %}
+        <div class="grid-responsive-lg projects-mobile-scroll">
+            {% for project in featured_projects %}
+            <div class="project-card-mobile" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:200 }}">
+                <div class="card-futuristic h-100">
+                    <div class="project-image project-image-mobile" style="height: 250px; background: var(--gradient-primary); border-radius: 20px 20px 0 0; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--dark-bg);">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="card-body d-flex flex-column p-4">
+                        <h5 class="card-title fw-bold mb-3">{{ project.title }}</h5>
+                        <p class="card-text text-muted flex-grow-1">{{ project.description|truncatewords:25 }}</p>
+                        <div class="mt-auto">
+                            <div class="mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-code me-1"></i>{{ project.technologies }}
+                                </small>
+                            </div>
+                            <div class="d-flex gap-2">
+                                {% if project.github_url %}
+                                <a href="{{ project.github_url }}" class="btn btn-outline-futuristic btn-sm flex-fill" target="_blank">
+                                    <i class="fab fa-github me-1"></i>CÓDIGO
+                                </a>
+                                {% endif %}
+                                {% if project.live_url %}
+                                <a href="{{ project.live_url }}" class="btn btn-futuristic btn-sm flex-fill" target="_blank">
+                                    <i class="fas fa-external-link-alt me-1"></i>DEMO
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+{% if featured_testimonials %}
+<section id="testimonials" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5" data-aos="fade-up">
+                <h2 class="heading-futuristic display-4 mb-4">TESTIMONIOS</h2>
+                <p class="lead text-muted">Lo que dicen mis clientes</p>
+            </div>
+        </div>
+        <div class="row">
+            {% for testimonial in featured_testimonials %}
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:200 }}">
+                <div class="card-futuristic h-100 text-center p-4">
+                    <div class="mb-4">
+                        <div class="testimonial-avatar" style="width: 80px; height: 80px; background: var(--gradient-primary); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--dark-bg);">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                    <p class="card-text fst-italic mb-4">"{{ testimonial.content }}"</p>
+                    <h6 class="fw-bold mb-1">{{ testimonial.name }}</h6>
+                    <small class="text-muted">{{ testimonial.position }}</small>
+                    <br>
+                    <small style="color: var(--primary-color);">{{ testimonial.company }}</small>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Blog Section -->
+{% if recent_posts %}
+<section id="blog" class="py-5" style="background: var(--darker-bg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5" data-aos="fade-up">
+                <h2 class="heading-futuristic display-4 mb-4">BLOG</h2>
+                <p class="lead text-muted">Artículos sobre tecnología y desarrollo</p>
+            </div>
+        </div>
+        <div class="row">
+            {% for post in recent_posts %}
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:200 }}">
+                <div class="card-futuristic h-100">
+                    <div class="blog-image" style="height: 200px; background: var(--gradient-secondary); border-radius: 20px 20px 0 0; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--dark-bg);">
+                        <i class="fas fa-blog"></i>
+                    </div>
+                    <div class="card-body d-flex flex-column p-4">
+                        <h5 class="card-title fw-bold mb-3">{{ post.title }}</h5>
+                        <p class="card-text text-muted flex-grow-1">{{ post.excerpt }}</p>
+                        <div class="mt-auto">
+                            <small class="text-muted">{{ post.created_date|date:"d M Y" }}</small>
+                            <a href="{% url 'blog_detail' post.slug %}" class="btn btn-outline-futuristic btn-sm float-end">
+                                LEER MÁS <i class="fas fa-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Resume Section -->
+<section id="resume" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center" data-aos="fade-up">
+                <h2 class="heading-futuristic display-4 mb-4">CURRÍCULUM</h2>
+                <p class="lead text-muted mb-4">
+                    Descarga mi currículum vitae para conocer más detalles sobre mi experiencia profesional.
+                </p>
+                <a href="/media/cv/CV_PALOMA.pdf" class="btn btn-futuristic btn-lg" download>
+                    <i class="fas fa-download me-2"></i>DESCARGAR CV
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-responsive" style="background: var(--darker-bg);">
+    <div class="container container-responsive">
+        <div class="row">
+            <div class="col-12 text-center mb-responsive" data-aos="fade-up">
+                <h2 class="heading-futuristic display-4 mb-4 heading-responsive">CONTACTO</h2>
+                <p class="lead text-muted lead-responsive">
+                    ¿Tienes un proyecto en mente? Me encantaría escuchar sobre él.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Contact Form -->
+            <div class="col-lg-8 col-md-12 mb-responsive" data-aos="fade-right">
+                <div class="card-futuristic p-5 contact-form-mobile">
+                    <h3 class="fw-bold mb-4 heading-responsive" style="color: var(--primary-color);">ENVIAR MENSAJE</h3>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6 col-12 mb-3">
+                                <label for="{{ form.name.id_for_label }}" class="form-label text-muted text-responsive">NOMBRE *</label>
+                                {{ form.name }}
+                                {% if form.name.errors %}
+                                <div class="text-danger small">{{ form.name.errors.0 }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.email.id_for_label }}" class="form-label text-muted">EMAIL *</label>
+                                {{ form.email }}
+                                {% if form.email.errors %}
+                                <div class="text-danger small">{{ form.email.errors.0 }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{ form.subject.id_for_label }}" class="form-label text-muted">ASUNTO *</label>
+                            {{ form.subject }}
+                            {% if form.subject.errors %}
+                            <div class="text-danger small">{{ form.subject.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="mb-4">
+                            <label for="{{ form.message.id_for_label }}" class="form-label text-muted">MENSAJE *</label>
+                            {{ form.message }}
+                            {% if form.message.errors %}
+                            <div class="text-danger small">{{ form.message.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+                        <button type="submit" class="btn btn-futuristic btn-lg w-100">
+                            <i class="fas fa-paper-plane me-2"></i>ENVIAR MENSAJE
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-lg-4" data-aos="fade-left">
+                <div class="card-futuristic h-100 p-4">
+                    <h4 class="fw-bold mb-4" style="color: var(--primary-color);">INFORMACIÓN DE CONTACTO</h4>
+                    
+                    <div class="mb-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="fas fa-envelope fa-lg me-3" style="color: var(--primary-color);"></i>
+                                    <div>
+                                        <h6 class="mb-0">EMAIL</h6>
+                                        <small class="text-muted">palomaopina4c@gmail.com</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="fas fa-phone fa-lg me-3" style="color: var(--secondary-color);"></i>
+                                    <div>
+                                        <h6 class="mb-0">TELÉFONO</h6>
+                                        <small class="text-muted">+34 635 173 997</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="fas fa-map-marker-alt fa-lg me-3" style="color: var(--accent-color);"></i>
+                                    <div>
+                                        <h6 class="mb-0">UBICACIÓN</h6>
+                                        <small class="text-muted">Málaga, España</small>
+                                    </div>
+                                </div>
+                    </div>
+
+                    <hr class="my-4" style="border-color: rgba(0, 255, 136, 0.2);">
+
+                    <h5 class="fw-bold mb-3" style="color: var(--primary-color);">REDES SOCIALES</h5>
+                    <div class="d-flex gap-3">
+                        <a href="https://www.linkedin.com/in/paloma-oca%C3%B1a-pi%C3%B1a/" class="btn btn-outline-futuristic btn-sm" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/PalomaGit/" class="btn btn-outline-futuristic btn-sm" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .tech-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    
+    .tech-item {
+        text-align: center;
+        padding: 1rem;
+        background: rgba(0, 255, 136, 0.1);
+        border-radius: 15px;
+        border: 1px solid rgba(0, 255, 136, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .tech-item:hover {
+        transform: translateY(-5px);
+        background: rgba(0, 255, 136, 0.2);
+        border-color: rgba(0, 255, 136, 0.4);
+    }
+    
+    .tech-item span {
+        display: block;
+        margin-top: 0.5rem;
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+    
+    .floating-elements {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+    }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+    
+    @keyframes pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(1.05); }
+    }
+    
+    .skill-bar .progress-bar {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .skill-bar .progress-bar::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        animation: shimmer 2s infinite;
+    }
+    
+    @keyframes shimmer {
+        0% { left: -100%; }
+        100% { left: 100%; }
+    }
+    
+    .project-image,
+    .blog-image,
+    .testimonial-avatar {
+        transition: all 0.3s ease;
+    }
+    
+    .card-futuristic:hover .project-image,
+    .card-futuristic:hover .blog-image,
+    .card-futuristic:hover .testimonial-avatar {
+        transform: scale(1.05);
+    }
+    
+    .form-control {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(0, 255, 136, 0.2);
+        color: var(--text-primary);
+        border-radius: 10px;
+    }
+    
+    .form-control:focus {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: var(--primary-color);
+        box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+        color: var(--text-primary);
+    }
+    
+    .form-control::placeholder {
+        color: var(--text-secondary);
+    }
+    
+    .form-label {
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    .skill-progress {
+        height: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+    }
+    
+    .skill-progress-bar {
+        background: linear-gradient(135deg, #00ff88, #0088ff);
+        border-radius: 4px;
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Set skill bar widths dynamically
+    document.addEventListener('DOMContentLoaded', function() {
+        const skillBars = document.querySelectorAll('.skill-progress-bar');
+        skillBars.forEach(bar => {
+            const width = bar.getAttribute('data-width');
+            bar.style.width = width + '%';
+        });
+    });
+</script>
+{% endblock %}
