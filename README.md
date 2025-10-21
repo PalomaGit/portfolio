@@ -140,23 +140,6 @@ portfolio/
 - Navegación optimizada para touch
 - Imágenes responsivas
 
-## 🌐 Despliegue
-
-### Producción
-1. Configurar variables de entorno para producción
-2. Usar base de datos PostgreSQL o MySQL
-3. Configurar servidor web (Nginx)
-4. Configurar SSL/HTTPS
-5. Usar Docker en producción
-
-### Variables de Producción
-```env
-DEBUG=False
-SECRET_KEY=clave-secreta-fuerte
-ALLOWED_HOSTS=tu-dominio.com
-EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
-```
-
 ## 📈 Próximas Mejoras
 
 - [ ] Sistema de comentarios en blog
@@ -165,16 +148,6 @@ EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
 - [ ] Analytics integrado
 - [ ] PWA (Progressive Web App)
 - [ ] Internacionalización (i18n)
-
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas. Por favor:
-
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
 
 ## 📄 Licencia
 
