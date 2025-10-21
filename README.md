@@ -2,6 +2,12 @@
 
 Un portfolio profesional desarrollado con Django que funciona como escaparate digital y currículum vitae interactivo.
 
+## 🌐 **Demo en Vivo**
+
+**👉 [Ver Portfolio Estático](https://palomagit.github.io/portfolio/)**
+
+*Versión estática optimizada para GitHub Pages con diseño futurista y responsive*
+
 ## ✨ Características Principales
 
 - **Diseño Futurista**: Interfaz moderna con efectos visuales avanzados (Matrix Rain, glitch effects, animaciones AOS)
@@ -139,6 +145,12 @@ portfolio/
 - Adaptable a móviles, tablets y desktop
 - Navegación optimizada para touch
 - Imágenes responsivas
+
+### GitHub Pages
+- **Hosting gratuito**: Versión estática disponible en GitHub Pages
+- **URL personalizada**: https://palomagit.github.io/portfolio/
+- **CDN global**: Carga rápida desde cualquier ubicación
+- **HTTPS automático**: Certificado SSL incluido
 
 ## 📈 Próximas Mejoras
 
