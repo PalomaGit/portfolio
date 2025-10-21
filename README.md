@@ -4,7 +4,19 @@ Un portfolio profesional desarrollado con Django que funciona como escaparate di
 
 ## 🌐 **Demo en Vivo**
 
+### **🚀 Acceso Directo**
 **👉 [Ver Portfolio Estático](https://palomagit.github.io/portfolio/)**
+
+### **📱 Previsualización en README**
+[![Portfolio Preview](https://img.shields.io/badge/Portfolio-Live-brightgreen?style=for-the-badge&logo=github)](https://palomagit.github.io/portfolio/)
+[![Django](https://img.shields.io/badge/Django-5.2.7-green?style=for-the-badge&logo=django)](https://palomagit.github.io/portfolio/)
+[![Docker](https://img.shields.io/badge/Docker-Ready-blue?style=for-the-badge&logo=docker)](https://palomagit.github.io/portfolio/)
+[![Responsive](https://img.shields.io/badge/Responsive-Design-purple?style=for-the-badge&logo=css3)](https://palomagit.github.io/portfolio/)
+
+### **🎯 URLs Disponibles**
+- 🔗 **GitHub Pages**: https://palomagit.github.io/portfolio/
+- 🐳 **Docker Local**: http://localhost:8000
+- 📦 **Repositorio**: https://github.com/PalomaGit/portfolio
 
 *Versión estática optimizada para GitHub Pages con diseño futurista y responsive*
 
@@ -151,6 +163,12 @@ portfolio/
 - **URL personalizada**: https://palomagit.github.io/portfolio/
 - **CDN global**: Carga rápida desde cualquier ubicación
 - **HTTPS automático**: Certificado SSL incluido
+
+### Previsualización en README
+- **Badges interactivos**: Enlaces directos con iconos
+- **Screenshots embebidos**: Capturas de pantalla del portfolio
+- **Enlaces múltiples**: Acceso desde diferentes fuentes
+- **Responsive**: Se adapta a cualquier dispositivo
 
 ## 📈 Próximas Mejoras
 
