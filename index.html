@@ -455,6 +455,17 @@
             .tech-grid {
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
+            
+            /* Profile card mobile adjustments */
+            .card-futuristic.p-5 {
+                padding: 2rem !important;
+                margin: 0.5rem auto !important;
+            }
+            
+            .profile-image-placeholder {
+                width: 250px !important;
+                height: 250px !important;
+            }
         }
 
         /* Mobile Horizontal Scroll */
@@ -630,9 +641,9 @@
                 </div>
                 <div class="col-lg-6 col-md-12 text-center" data-aos="fade-left" data-aos-delay="400">
                     <div class="position-relative">
-                        <div class="card-futuristic p-5 profile-card-mobile" style="max-width: 400px; margin: 0 auto;">
+                        <div class="card-futuristic p-5" style="max-width: 400px; margin: 0 auto; padding: 3rem !important;">
                             <div class="position-relative">
-                                <div class="profile-image-placeholder profile-image-mobile" style="width: 300px; height: 300px; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: var(--dark-bg); position: relative; overflow: hidden;">
+                                <div class="profile-image-placeholder" style="width: 300px; height: 300px; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: var(--dark-bg); position: relative; overflow: hidden;">
                                     <img src="profile.png" alt="Paloma Ocaña" class="img-responsive" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                     <div style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; background: var(--gradient-primary);">
                                         <i class="fas fa-user-astronaut"></i>
@@ -641,9 +652,9 @@
                                 <div class="position-absolute top-0 start-0 w-100 h-100" style="border-radius: 50%; border: 2px solid var(--primary-color); animation: pulse 2s infinite;"></div>
                             </div>
                             <div class="mt-4">
-                                <h4 class="fw-bold heading-responsive" style="color: var(--primary-color);">PERFIL PROFESIONAL</h4>
-                                <p class="text-muted text-responsive">Desarrolladora Full-Stack</p>
-                                <p class="text-muted text-responsive">Málaga, España</p>
+                                <h4 class="fw-bold" style="color: var(--primary-color);">PERFIL PROFESIONAL</h4>
+                                <p class="text-muted">Desarrolladora Full-Stack</p>
+                                <p class="text-muted">Málaga, España</p>
                             </div>
                         </div>
                     </div>
