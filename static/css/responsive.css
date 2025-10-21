@@ -47,7 +47,8 @@
     
     .profile-card-mobile {
         padding: 1.5rem !important;
-        margin: 1rem 0;
+        margin: 1rem auto;
+        max-width: 350px !important;
     }
     
     /* Typography Mobile */
@@ -249,6 +250,12 @@
         height: 250px !important;
     }
     
+    .profile-card-tablet {
+        padding: 2rem !important;
+        margin: 0 auto;
+        max-width: 380px !important;
+    }
+    
     .hero-buttons {
         flex-direction: row;
         justify-content: center;
@@ -297,6 +304,18 @@
         font-size: 2rem !important;
     }
     
+    .profile-card-mobile {
+        padding: 3rem !important;
+        margin: 0 auto;
+        max-width: 400px !important;
+    }
+    
+    .profile-image-mobile {
+        width: 300px !important;
+        height: 300px !important;
+        margin: 0 auto;
+    }
+    
     .skills-grid-desktop {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -312,6 +331,18 @@
     
     .hero-subtitle {
         font-size: 2.25rem !important;
+    }
+    
+    .profile-card-mobile {
+        padding: 3.5rem !important;
+        margin: 0 auto;
+        max-width: 420px !important;
+    }
+    
+    .profile-image-mobile {
+        width: 320px !important;
+        height: 320px !important;
+        margin: 0 auto;
     }
     
     .skills-grid-desktop {
