@@ -18,6 +18,57 @@ Mi portfolio profesional (desarrollado con Django) que funciona como mi escapara
 - 🐳 **Docker Local**: http://localhost:8000
 - 📦 **Repositorio**: https://github.com/PalomaGit/portfolio
 
+## 🚀 Instalación y Uso
+
+### **🐳 Con Docker (Recomendado)**
+
+El portfolio está completamente configurado para funcionar con Docker. Solo necesitas clonar y ejecutar:
+
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/PalomaGit/portfolio.git
+cd portfolio
+
+# 2. Construir y ejecutar con Docker Compose
+docker-compose up --build
+
+# 3. ¡Listo! El sitio estará disponible en:
+# 🌐 http://localhost:8000
+# 👤 Panel admin: http://localhost:8000/admin/ (admin/admin123)
+```
+
+**✨ Lo que incluye automáticamente:**
+- ✅ Migraciones de base de datos
+- ✅ Archivos estáticos recopilados
+- ✅ Superusuario creado (admin/admin123)
+- ✅ Datos de ejemplo (proyectos, artículos, habilidades)
+- ✅ Configuración completa lista para usar
+
+### **📦 Instalación Manual (Sin Docker)**
+
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/PalomaGit/portfolio.git
+cd portfolio
+
+# 2. Crear entorno virtual
+python -m venv venv
+source venv/bin/activate  # En Windows: venv\Scripts\activate
+
+# 3. Instalar dependencias
+pip install -r requirements.txt
+
+# 4. Ejecutar script de inicialización
+chmod +x init_portfolio.sh
+./init_portfolio.sh
+
+# 5. Ejecutar servidor
+python manage.py runserver
+
+# 6. Acceder a:
+# 🌐 http://localhost:8000
+# 👤 Panel admin: http://localhost:8000/admin/ (admin/admin123)
+```
 
 ## ✨ Características Principales
 

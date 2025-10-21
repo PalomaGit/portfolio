@@ -31,5 +31,8 @@ EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
     CMD python -c "import requests; requests.get('http://localhost:8000/', timeout=10)"
 
+# Make init script executable
+RUN chmod +x /app/init_portfolio.sh
+
 # Run the application
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["sh", "-c", "./init_portfolio.sh && python manage.py runserver 0.0.0.0:8000"]
