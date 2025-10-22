@@ -5,7 +5,7 @@
 
 {% block content %}
 <!-- Blog Detail Section -->
-<section class="py-5" style="min-height: 100vh; padding-top: 120px;">
+<section class="py-5 blog-detail-section page-with-header" style="min-height: 100vh;">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto">
@@ -34,8 +34,16 @@
                     <div class="article-content">
                         <p class="lead text-muted mb-4">{{ post.excerpt }}</p>
                         
-                        <div class="content-text">
-                            {{ post.content|linebreaks }}
+                        <div class="content-text expandable-content">
+                            <div class="content-preview">
+                                {{ post.get_short_content|linebreaks }}
+                            </div>
+                            <div class="content-full" style="display: none;">
+                                {{ post.content|linebreaks }}
+                            </div>
+                            <button class="btn btn-outline-futuristic btn-sm mt-3 expand-button">
+                                <i class="fas fa-chevron-down me-2"></i><span>Leer más</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -131,5 +139,74 @@
         font-style: italic;
         color: var(--text-secondary);
     }
+
+    /* Estilos para el contenido expandible */
+    .expandable-content {
+        position: relative;
+    }
+
+    .content-preview {
+        position: relative;
+    }
+
+    .content-full {
+        position: relative;
+    }
+
+    .expand-button {
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        margin-top: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .expand-button i {
+        transition: transform 0.3s ease;
+    }
+
+    .expand-button.expanded i {
+        transform: rotate(180deg);
+    }
+
+    /* Efecto de degradado para el texto truncado */
+    .content-preview::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: linear-gradient(transparent, var(--card-bg));
+        pointer-events: none;
+    }
 </style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const expandButton = document.querySelector('.expand-button');
+    const contentPreview = document.querySelector('.content-preview');
+    const contentFull = document.querySelector('.content-full');
+
+    if (expandButton && contentPreview && contentFull) {
+        expandButton.addEventListener('click', function() {
+            const isExpanded = this.classList.contains('expanded');
+            
+            if (isExpanded) {
+                contentFull.style.display = 'none';
+                contentPreview.style.display = 'block';
+                this.classList.remove('expanded');
+                this.querySelector('span').textContent = 'Leer más';
+            } else {
+                contentPreview.style.display = 'none';
+                contentFull.style.display = 'block';
+                this.classList.add('expanded');
+                this.querySelector('span').textContent = 'Mostrar menos';
+            }
+        });
+    }
+});
+</script>
 {% endblock %}

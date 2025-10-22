@@ -33,14 +33,14 @@
             <div class="col-lg-6 col-md-12 text-center" data-aos="fade-left" data-aos-delay="400">
                 <div class="position-relative">
                     <div class="card-futuristic p-5 profile-card-mobile" style="max-width: 400px; margin: 0 auto;">
-                        <div class="position-relative">
-                            <div class="profile-image-placeholder profile-image-mobile" style="width: 300px; height: 300px; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: var(--dark-bg); position: relative; overflow: hidden;">
+                        <div class="position-relative profile-image-container">
+                            <div class="profile-image-placeholder profile-image-mobile" style="border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: var(--dark-bg); position: relative; overflow: hidden;">
                                 <img src="{% static 'images/profile.png' %}" alt="Paloma Ocaña" class="img-responsive" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 <div style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; background: var(--gradient-primary);">
                                     <i class="fas fa-user-astronaut"></i>
                                 </div>
                             </div>
-                            <div class="position-absolute top-0 start-0 w-100 h-100" style="border-radius: 50%; border: 2px solid var(--primary-color); animation: pulse 2s infinite;"></div>
+                            <div class="position-absolute top-0 start-0 w-100 h-100 profile-image-border" style="border-radius: 50%; border: 2px solid var(--primary-color); animation: pulse 2s infinite;"></div>
                         </div>
                         <div class="mt-4">
                             <h4 class="fw-bold heading-responsive" style="color: var(--primary-color);">PERFIL PROFESIONAL</h4>
@@ -99,26 +99,32 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 text-center" data-aos="fade-left">
-                <div class="card-futuristic p-5">
-                            <div class="tech-grid">
-                                <div class="tech-item">
-                                    <i class="fab fa-js-square fa-3x" style="color: var(--primary-color);"></i>
-                                    <span>JavaScript</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fab fa-angular fa-3x" style="color: var(--secondary-color);"></i>
-                                    <span>Angular</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fab fa-node-js fa-3x" style="color: var(--accent-color);"></i>
-                                    <span>Node.js</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fab fa-php fa-3x" style="color: var(--primary-color);"></i>
-                                    <span>PHP</span>
-                                </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="card-futuristic p-4 h-100 d-flex flex-column">
+                    <h4 class="h5 fw-bold mb-3" style="color: var(--primary-color);">
+                        <i class="fas fa-code me-2"></i>TECNOLOGÍAS PRINCIPALES
+                    </h4>
+                    
+                    <div class="tech-section flex-grow-1 d-flex flex-column">
+                        <div class="tech-grid">
+                            <div class="tech-item" data-aos="fade-up" data-aos-delay="200">
+                                <i class="fab fa-js-square fa-2x" style="color: var(--primary-color);"></i>
+                                <span class="text-light mt-2">JavaScript</span>
                             </div>
+                            <div class="tech-item" data-aos="fade-up" data-aos-delay="300">
+                                <i class="fab fa-angular fa-2x" style="color: var(--secondary-color);"></i>
+                                <span class="text-light mt-2">Angular</span>
+                            </div>
+                            <div class="tech-item" data-aos="fade-up" data-aos-delay="400">
+                                <i class="fab fa-node-js fa-2x" style="color: var(--accent-color);"></i>
+                                <span class="text-light mt-2">Node.js</span>
+                            </div>
+                            <div class="tech-item" data-aos="fade-up" data-aos-delay="500">
+                                <i class="fab fa-php fa-2x" style="color: var(--primary-color);"></i>
+                                <span class="text-light mt-2">PHP</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -322,17 +328,74 @@
 </section>
 {% endif %}
 
-<!-- Resume Section -->
+<!-- Education & Experience Section -->
 <section id="resume" class="py-5">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 mx-auto text-center" data-aos="fade-up">
-                <h2 class="heading-futuristic display-4 mb-4">CURRÍCULUM</h2>
-                <p class="lead text-muted mb-4">
-                    Descarga mi currículum vitae para conocer más detalles sobre mi experiencia profesional.
-                </p>
+            <div class="col-12 text-center mb-5" data-aos="fade-up">
+                <h2 class="heading-futuristic display-4 mb-4">TRAYECTORIA PROFESIONAL</h2>
+                <p class="lead text-muted">Mi camino en el desarrollo web</p>
+            </div>
+        </div>
+        
+        <!-- Education -->
+        <div class="row mb-5">
+            <div class="col-lg-6" data-aos="fade-right">
+                <h3 class="heading-futuristic h2 mb-4">EDUCACIÓN</h3>
+                
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timeline-date">2020 - 2024</div>
+                    <h4 class="timeline-title">Grado en Desarrollo de Software</h4>
+                    <div class="timeline-subtitle">Universidad Ejemplo</div>
+                    <p class="timeline-content">
+                        Especialización en desarrollo web y aplicaciones móviles.
+                        Proyecto final: Plataforma de e-learning con React y Node.js.
+                    </p>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="timeline-date">2023</div>
+                    <h4 class="timeline-title">Certificación AWS</h4>
+                    <div class="timeline-subtitle">Amazon Web Services</div>
+                    <p class="timeline-content">
+                        AWS Certified Developer - Associate
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Experience -->
+            <div class="col-lg-6" data-aos="fade-left">
+                <h3 class="heading-futuristic h2 mb-4">EXPERIENCIA</h3>
+                
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timeline-date">2023 - Presente</div>
+                    <h4 class="timeline-title">Desarrolladora Full-Stack Senior</h4>
+                    <div class="timeline-subtitle">Empresa Tech S.L.</div>
+                    <p class="timeline-content">
+                        Desarrollo de aplicaciones web escalables.
+                        Liderazgo de equipo de desarrollo front-end.
+                        Implementación de arquitecturas cloud-native.
+                    </p>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="timeline-date">2021 - 2023</div>
+                    <h4 class="timeline-title">Desarrolladora Front-end</h4>
+                    <div class="timeline-subtitle">Startup Digital</div>
+                    <p class="timeline-content">
+                        Desarrollo de interfaces de usuario con React.
+                        Optimización de rendimiento y accesibilidad.
+                        Implementación de diseños responsivos.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CV Download -->
+        <div class="row">
+            <div class="col-12 text-center" data-aos="fade-up">
                 <a href="/media/cv/CV_PALOMA.pdf" class="btn btn-futuristic btn-lg" download>
-                    <i class="fas fa-download me-2"></i>DESCARGAR CV
+                    <i class="fas fa-download me-2"></i>DESCARGAR CV COMPLETO
                 </a>
             </div>
         </div>
@@ -448,17 +511,22 @@
     .tech-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-        margin-top: 2rem;
+        gap: 1rem;
+        width: 100%;
+        margin-top: 0.5rem;
     }
     
     .tech-item {
         text-align: center;
-        padding: 1rem;
+        padding: 1.5rem 1rem;
         background: rgba(0, 255, 136, 0.1);
         border-radius: 15px;
         border: 1px solid rgba(0, 255, 136, 0.2);
         transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 120px;
     }
     
     .tech-item:hover {

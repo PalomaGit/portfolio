@@ -62,10 +62,36 @@ class BlogPost(models.Model):
     
     def __str__(self):
         return self.title
+        
+    def get_short_content(self, words=50):
+        """Retorna una versión resumida del contenido"""
+        content = ' '.join(self.content.split())  # Normalizar espacios
+        words_list = content.split()
+        if len(words_list) <= words:
+            return content
+        return ' '.join(words_list[:words]) + '...'
     
+    def generate_excerpt(self):
+        """Genera un resumen automático del contenido"""
+        # Eliminar saltos de línea y espacios extras
+        content = ' '.join(self.content.split())
+        # Si el contenido es más corto que 500 caracteres, usarlo completo
+        if len(content) <= 500:
+            return content
+        # Buscar el final de la última oración completa antes de los 500 caracteres
+        cutoff = content[:500].rfind('.')
+        if cutoff == -1:  # Si no hay punto, cortar en el último espacio
+            cutoff = content[:500].rfind(' ')
+        if cutoff == -1:  # Si no hay espacio, cortar en 500
+            cutoff = 500
+        return content[:cutoff + 1].strip()
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
+        # Generar excerpt automáticamente si no se proporciona uno
+        if not self.excerpt:
+            self.excerpt = self.generate_excerpt()
         super().save(*args, **kwargs)
 
 

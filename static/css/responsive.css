@@ -1,9 +1,251 @@
 /* Responsive Design - Portfolio Futurista */
 
+/* Variables for header heights */
+:root {
+    --header-height-desktop: 80px;
+    --header-height-mobile: 60px;
+}
+
+/* Header spacing for all pages with fixed header */
+.page-with-header {
+    padding-top: var(--header-height-desktop);
+}
+
+/* Variables for spacing and colors */
+:root {
+    --section-spacing: 8rem;
+    --subsection-spacing: 4rem;
+    --text-light: rgba(255, 255, 255, 0.9);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --text-date: rgba(255, 255, 255, 0.4);
+}
+
+/* Section Spacing */
+section {
+    padding: var(--section-spacing) 0;
+}
+
+section + section {
+    margin-top: var(--section-spacing);
+}
+
+/* Grid System for Technologies */
+.tech-section {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    justify-content: space-between;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 0.5rem 0;
+}
+
+.tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.25rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    transition: all 0.3s ease;
+}
+
+.tech-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1rem;
+    margin-top: auto;
+}
+
+.tech-item i {
+    font-size: 2.25em;
+    margin-bottom: 0.75rem;
+    transition: transform 0.3s ease;
+}
+
+.tech-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-3px);
+}
+
+.tech-item:hover i {
+    transform: scale(1.1);
+}
+
+.tech-item span {
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.tech-footer {
+    text-align: center;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.tech-section:hover .tech-footer {
+    opacity: 1;
+}
+
+/* Education and Experience Sections */
+.timeline-item {
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-left: 3px solid var(--primary-color);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 0 15px 15px 0;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+    background: rgba(255, 255, 255, 0.04);
+    transform: translateX(5px);
+}
+
+.timeline-date {
+    font-size: 0.9rem;
+    color: var(--text-date);
+    margin-bottom: 0.5rem;
+    font-family: 'Orbitron', monospace;
+    letter-spacing: 1px;
+}
+
+.timeline-title {
+    font-size: 1.5rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.timeline-subtitle {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.timeline-content {
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+/* Improved Text Hierarchy */
+.text-light {
+    color: var(--text-light) !important;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
 /* Mobile First Approach */
+
+/* Base styles for profile image */
+.profile-image-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.profile-image-mobile,
+.profile-image-border {
+    transition: all 0.3s ease;
+}
+
+@keyframes pulse {
+    0% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+    50% { transform: translateX(-50%) scale(1.05); opacity: 0.4; }
+    100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+    .blog-detail-section {
+        padding-top: calc(var(--header-height-desktop) + 2rem);
+    }
+
+    .blog-detail-section .card-futuristic {
+        padding: 2rem;
+    }
+
+    .card-futuristic {
+        margin-bottom: 2rem;
+    }
+
+    .profile-image-mobile {
+        width: 250px !important;
+        height: 250px !important;
+    }
+
+    .profile-image-border {
+        width: 250px !important;
+        height: 250px !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .profile-image-mobile {
+        width: 300px !important;
+        height: 300px !important;
+    }
+
+    .profile-image-border {
+        width: 300px !important;
+        height: 300px !important;
+    }
+}
+}
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+    :root {
+        --section-spacing: 4rem;
+        --subsection-spacing: 2rem;
+    }
+
+    .tech-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 1rem;
+    }
+
+    .timeline-item {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .timeline-title {
+        font-size: 1.25rem;
+    }
+
+    .timeline-subtitle {
+        font-size: 1rem;
+    }
+}
 
 /* Extra Small devices (phones, 576px and down) */
 @media (max-width: 575.98px) {
+    .page-with-header {
+        padding-top: var(--header-height-mobile);
+    }
+
+    /* Blog Detail Mobile Styles */
+    .blog-detail-section {
+        padding-top: calc(var(--header-height-mobile) + 2rem) !important;
+    }
+
+    .blog-detail-section .card-futuristic {
+        padding: 1.5rem !important;
+    }
+
+    .blog-detail-section .btn-outline-futuristic {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
     /* Hero Section Mobile */
     .hero-mobile {
         padding: 2rem 0;
@@ -39,15 +281,54 @@
     }
     
     /* Profile Image Mobile */
+    .profile-image-container {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        margin: 0 auto;
+    }
+
     .profile-image-mobile {
         width: 200px !important;
         height: 200px !important;
-        margin: 1rem auto;
+        margin: 0 auto;
+    }
+
+    .profile-image-border {
+        width: 200px !important;
+        height: 200px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
     }
     
     .profile-card-mobile {
         padding: 1.5rem !important;
         margin: 1rem auto;
+    }
+
+    /* Navbar Mobile Adjustments */
+    .navbar-futuristic {
+        padding: 0.5rem 1rem !important;
+        min-height: var(--header-height-mobile);
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem !important;
+    }
+
+    .navbar-nav {
+        padding: 1rem 0;
+    }
+
+    .nav-link {
+        padding: 0.75rem 1rem !important;
+    }
+
+    /* Card and Section Spacing Mobile */
+    .card-futuristic {
+        margin-bottom: 1rem;
+        padding: 1.25rem !important;
+    
         max-width: 350px !important;
     }
     
