@@ -36,7 +36,7 @@
                         
                         <div class="content-text expandable-content">
                             <div class="content-preview">
-                                {{ post.get_short_content|linebreaks }}
+                                {{ post.content|truncatewords:50|linebreaks }}
                             </div>
                             <div class="content-full" style="display: none;">
                                 {{ post.content|linebreaks }}

@@ -21,13 +21,6 @@ class Project(models.Model):
     def __str__(self):
         return self.title
     
-    def get_technologies_list(self):
-        """Retorna las tecnologías como lista"""
-        return [tech.strip() for tech in self.technologies.split(',') if tech.strip()]
-    
-    def has_links(self):
-        """Verifica si el proyecto tiene enlaces"""
-        return bool(self.github_url or self.live_url)
 
 
 class Testimonial(models.Model):
@@ -62,36 +55,13 @@ class BlogPost(models.Model):
     
     def __str__(self):
         return self.title
-        
-    def get_short_content(self, words=50):
-        """Retorna una versión resumida del contenido"""
-        content = ' '.join(self.content.split())  # Normalizar espacios
-        words_list = content.split()
-        if len(words_list) <= words:
-            return content
-        return ' '.join(words_list[:words]) + '...'
     
-    def generate_excerpt(self):
-        """Genera un resumen automático del contenido"""
-        # Eliminar saltos de línea y espacios extras
-        content = ' '.join(self.content.split())
-        # Si el contenido es más corto que 500 caracteres, usarlo completo
-        if len(content) <= 500:
-            return content
-        # Buscar el final de la última oración completa antes de los 500 caracteres
-        cutoff = content[:500].rfind('.')
-        if cutoff == -1:  # Si no hay punto, cortar en el último espacio
-            cutoff = content[:500].rfind(' ')
-        if cutoff == -1:  # Si no hay espacio, cortar en 500
-            cutoff = 500
-        return content[:cutoff + 1].strip()
-
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
         # Generar excerpt automáticamente si no se proporciona uno
         if not self.excerpt:
-            self.excerpt = self.generate_excerpt()
+            self.excerpt = self.content[:500].strip()
         super().save(*args, **kwargs)
 
 
@@ -132,28 +102,6 @@ class Skill(models.Model):
     
     def __str__(self):
         return self.name
-    
-    def get_proficiency_display(self):
-        """Retorna el nivel de competencia como texto"""
-        if self.proficiency >= 90:
-            return "Experto"
-        elif self.proficiency >= 70:
-            return "Avanzado"
-        elif self.proficiency >= 50:
-            return "Intermedio"
-        else:
-            return "Básico"
-    
-    def get_proficiency_color(self):
-        """Retorna el color CSS basado en el nivel de competencia"""
-        if self.proficiency >= 90:
-            return "var(--primary-color)"
-        elif self.proficiency >= 70:
-            return "var(--secondary-color)"
-        elif self.proficiency >= 50:
-            return "var(--accent-color)"
-        else:
-            return "#666"
 
 
 class Service(models.Model):

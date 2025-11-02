@@ -1,13 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
-from django.db.models import Q
-from .models import Project, Testimonial, BlogPost, ContactMessage, Skill, Service
+from .models import Project, Testimonial, BlogPost, Skill, Service
 from .forms import ContactForm
 
 
 def single_page(request):
-    """Página única con todas las secciones optimizada"""
-    # Optimización: usar select_related y prefetch_related cuando sea posible
+    """Página única con todas las secciones"""
     featured_projects = Project.objects.filter(featured=True).order_by('-created_date')[:6]
     featured_testimonials = Testimonial.objects.filter(featured=True).order_by('-created_date')[:3]
     recent_posts = BlogPost.objects.filter(published=True).order_by('-created_date')[:3]
@@ -24,12 +22,11 @@ def single_page(request):
     else:
         form = ContactForm()
 
-    # Optimización: usar defaultdict para agrupar skills
+    # Agrupar skills por categoría
     from collections import defaultdict
     skills_by_category = defaultdict(list)
     for skill in skills:
-        category = skill.get_category_display()
-        skills_by_category[category].append(skill)
+        skills_by_category[skill.get_category_display()].append(skill)
 
     context = {
         'featured_projects': featured_projects,
